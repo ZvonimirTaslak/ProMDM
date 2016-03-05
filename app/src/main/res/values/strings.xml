@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProMDM</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="alarm_receiver">AlarmReceiver</string>
+    <string name="data_send">Data send</string>
+</resources>
