@@ -6,7 +6,13 @@ import android.net.TrafficStats;
 import android.os.Handler;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class SendDataService extends IntentService {
@@ -22,11 +28,11 @@ public class SendDataService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-//        OkHttpClient client= new OkHttpClient();
-//        RequestBody  body= RequestBody.create(MEDIA_TYPE,TrafficStats.getMobileRxBytes() +"");
-//        Request request= new Request.Builder().url(SERVER).post(body).build();
-//        try {
-//            final Response response = client.newCall(request).execute();
+        OkHttpClient client= new OkHttpClient();
+        RequestBody body= RequestBody.create(MEDIA_TYPE,TrafficStats.getMobileRxBytes() +"");
+        Request request= new Request.Builder().url(SERVER).post(body).build();
+        try {
+            final Response response = client.newCall(request).execute();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -35,9 +41,9 @@ public class SendDataService extends IntentService {
                 }
             });
 
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
